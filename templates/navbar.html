@@ -1,0 +1,45 @@
+<div class="navbar navbar-fixed-top" id="header">
+	<div class="container">
+		<h1 class="site-name">
+		<a class="site-name" href="/">Site Name</a>
+		</h1>
+		<div class="nav-collapse collapse" id="menu">
+			<ul class="nav menu">
+					<li class="active item" >
+						<a href="test1" >test1</a>
+					</li>
+					<li class="item" >
+						<a href="test2" >test2</a>
+					</li>
+				{% endfor %}
+			</ul>
+
+		<div class="nav-collapse collapse" id="menu">
+		<div class="user">
+				{% if user.is_authenticated %}
+				<ul class="nav">
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+						{{ user.username }}
+						<b class="caret"></b>
+					</a>
+					<ul class="dropdown-menu">
+						<li><a href="/accounts/{{ user.username }}/"><i class="icon-user"></i> Settings</a></li>
+						<li class="divider"></li>
+						<li><a href="/accounts/signout/"><i class="icon-off"></i> Log out</a></li>
+					</ul>
+				</li>
+				</ul>
+				{% else %}
+				<a href="/accounts/signin/">Log in</a>
+				or
+				<a href="/accounts/signup/">Sign up</a>
+				{% endif %}
+		</div>
+	</div>
+
+
+		</div>
+	</div>
+</div>
+

@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %} {{ AUTHOR }}'s Blog {% endblock %}
+
+{% block content %}
+	<div class="row">
+		<div class="span2">
+		</div>
+
+		{% if articles %}
+		<div class="span" style="font-size: 16px;">
+
+			{% for article in (articles_page.object_list if articles_page else articles) %}
+			<div class="row">
+				<div class="span" style="color: #888; font-style: italic;">
+					{{ article.date.strftime('%b %d, %Y') }}
+				</div>
+				<div class="span6">
+					<a herf="{{ SITEURL }}/{{ article.url }}"><u>{{ article.title }}</u></a>
+					{{ article.excerpt }}
+				</div>
+			</div>
+			<br>
+			{% endfor %}
+
+		</div>
+		{%endif%}
+
+	</div>
+{% endblock %}

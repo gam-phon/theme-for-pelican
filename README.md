@@ -1,2 +1,1 @@
-my-template
-===========
+Theme for my blog
