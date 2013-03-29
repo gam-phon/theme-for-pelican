@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %} {{ article.title }} | {{ SITENAME }} {% endblock %}
+
+{% block content %}
+
+	<div class="row">
+		<div class="offset2 span7">
+			<h1 class="title"> {{ article.title }}</h1>
+
+			<hr>
+
+			<ul class="inline" style="margin-top: -20px; font-style: italic;">
+				<li>{{ article.author}}</li>
+				<li>-</li>
+				<li>{{ article.date.strftime('%b %d, %Y') }}</li>
+				<li>-</li>
+				<li>
+					{% if article.tags %}
+					tags:
+						{% for tag in article.tags %}
+						<a href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a>,
+						{% endfor %}
+					{% endif %}
+				</li>
+			</ul>
+			</p>
+		</div>
+
+	</div>
+
+	<div class="row">
+		<div class="span7 offset2">
+			<p class="text-center">
+			{{ article.content }}
+
+			{% include "disqus.html" %}
+			</p>
+		</div>
+	</div>
+
+{% endblock %}

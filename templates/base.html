@@ -2,22 +2,22 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Title</title>
+		<title>{% block title %} Title {% endblock %} </title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
 
-		<!--
 		<link href="{{ SITEURL }}/theme/css/bootstrap.min.css" rel="stylesheet">
 		<link href="{{ SITEURL }}/theme/css/bootstrap-responsive.min.css" rel="stylesheet">
 		<link href="{{ SITEURL }}/theme/css/font-awesome.min.css" rel="stylesheet">
 		<link href="{{ SITEURL }}/theme/css/project.css" rel="stylesheet">
-		-->
 
+		<!--
 		<link href="{{ STATIC_URL }}css/bootstrap.min.css" rel="stylesheet">
 		<link href="{{ STATIC_URL }}css/bootstrap-responsive.min.css" rel="stylesheet">
 		<link href="{{ STATIC_URL }}css/font-awesome.min.css" rel="stylesheet">
 		<link href="{{ STATIC_URL }}css/project.css" rel="stylesheet">
+		-->
     <style>
       body {
         padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
@@ -27,12 +27,11 @@
 
   <body>
 
-		<div class="container">
-
 		{% block header %}
 			{% include "header.html" %}
 		{% endblock %}
 
+		<div class="container">
 
 		<div class=contant>
 			{% block content %} {% endblock %}
@@ -46,13 +45,13 @@
 
 
     <script src="http://code.jquery.com/jquery-latest.js"></script>
-		<!--
 		<script src="{{ SITEURL }}/theme/js/bootstrap.min.js"></script>
 		<script src="{{ SITEURL }}/theme/js/project.js"></script>
-		-->
 
+		<!--
 		<script src="{{STATIC_URL}}js/bootstrap.min.js"></script>
 		<script src="{{STATIC_URL}}js/project.js"></script>
+		-->
 		{% include 'googleanalytics.html' %}
 		{% include 'piwik.html' %}
   </body>

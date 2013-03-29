@@ -16,12 +16,13 @@
 							</a>
 
 							<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel" style="position: fixed; top: 0; left: 0;">
-								<li><a tabindex="-1" href="#">Action</a></li>
-								<li><a tabindex="-1" href="#">Another action</a></li>
-								<li><a tabindex="-1" href="#">Something else here</a></li>
+								{% for section in SECTIONS %}
+									<li><a href="{{ SITEURL }}/{{ section[1]}}">{{ section[0] }}</a> </li>
+								{% endfor %}
 
 								<li class="divider"></li>
 
+								<!--
 								<li class="dropdown-submenu">
 									<a tabindex="-1" href="#">More options</a>
 									<ul class="dropdown-menu">
@@ -29,8 +30,16 @@
 										<li><a tabindex="-1" href="#">Something else here</a></li>
 									</ul>
 								</li>
+								-->
 
-								<li><a tabindex="-1" href="#">Separated link</a></li>
+								{% for tag in tag_cloud %}
+								<li class="tag-{{ tag.1 }}"><a href="{{ SITEURL }}/{{ tag.0.url }}">{{ tag.0 | capitalize }}</a></li>
+								<!--
+								<li><a tabindex="-1" href="/tag/deployment.html">Deployment</a></li>
+								<li><a tabindex="-1" href="/tag/django.html">Django</a></li>
+								-->
+								{% endfor %}
+
 							</ul>
 						</div>
 					</li>
