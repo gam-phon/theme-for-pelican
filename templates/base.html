@@ -18,28 +18,24 @@
 		<link href="{{ STATIC_URL }}css/font-awesome.min.css" rel="stylesheet">
 		<link href="{{ STATIC_URL }}css/project.css" rel="stylesheet">
 		-->
-    <style>
-      body {
-        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
-      }
-    </style>
   </head>
 
-  <body>
+  <body style="padding-top: 60px;">
+
+
+		<div class="container">
 
 		{% block header %}
 			{% include "header.html" %}
 		{% endblock %}
 
-		<div class="container">
-
-		<div class=contant>
+		<section content>
 			{% block content %} {% endblock %}
-		</div>
+		</section>
 
-			{% block footer %}
-				{% include "footer.html" %}
-			{% endblock %}
+		{% block footer %}
+			{% include "footer.html" %}
+		{% endblock %}
 
     </div>
 
