@@ -7,42 +7,77 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-		<link href="{{ SITEURL }}/theme/css/bootstrap.min.css" rel="stylesheet">
-		<link href="{{ SITEURL }}/theme/css/bootstrap-responsive.min.css" rel="stylesheet">
-		<link href="{{ SITEURL }}/theme/css/font-awesome.min.css" rel="stylesheet">
+        <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css" rel="stylesheet">
 		<link href="{{ SITEURL }}/theme/css/project.css" rel="stylesheet">
 
 		<!--
-		<link href="{{ STATIC_URL }}css/bootstrap.min.css" rel="stylesheet">
-		<link href="{{ STATIC_URL }}css/bootstrap-responsive.min.css" rel="stylesheet">
+        <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-responsive.min.css" rel="stylesheet">
+        <link href="{{ STATIC_URL }}css/bootstrap.min.css" rel="stylesheet">
+        <link href="{{ STATIC_URL }}css/bootstrap-responsive.min.css" rel="stylesheet">
 		<link href="{{ STATIC_URL }}css/font-awesome.min.css" rel="stylesheet">
 		<link href="{{ STATIC_URL }}css/project.css" rel="stylesheet">
 		-->
   </head>
 
-  <body style="padding-top: 60px;">
+  <body style="padding-top: 10px;">
 
 
 		<div class="container">
+            <div class='row'>
+                <div class='span2'>
+                    <div class="affix">
+                        <div class="dropdown">
+                            <a class="btn dropdown-toggle" data-toggle="dropdown" href="#" style="padding: 4px 12px;"><i class="icon-reorder"></i>
+                            Sections
+                            </a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel" style="top: -10px; left: -10px;">
+                                {% for section in SECTIONS %}
+                                    <li><a href="{{ SITEURL }}/{{ section[1]}}">{{ section[0] }}</a> </li>
+                                {% endfor %}
+                                <li class="divider"></li>
+                                <!--
+                                <li class="dropdown-submenu">
+                                    <a tabindex="-1" href="#">More options</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a tabindex="-1" href="#">Another action</a></li>
+                                        <li><a tabindex="-1" href="#">Something else here</a></li>
+                                    </ul>
+                                </li>
+                                -->
+                                {% for tag in tag_cloud %}
+                                <li class="tag-{{ tag.1 }}"><a href="{{ SITEURL }}/{{ tag.0.url }}">{{ tag.0 | capitalize }}</a></li>
+                                <!--
+                                <li><a tabindex="-1" href="/tag/deployment.html">Deployment</a></li>
+                                <li><a tabindex="-1" href="/tag/django.html">Django</a></li>
+                                -->
+                                {% endfor %}
+                            </ul>
+                            <a href="/" style='margin-left: 20px;'><i class="icon-home"></i> Home</a>
+                        </div>
+                    </div>
+                </div>
+                <div class='span8'>
+                    <section content>
+                        {% block content %} {% endblock %}
+                    </section>
+                    {% block footer %}
+                        {% include "footer.html" %}
+                    {% endblock %}
+                </div>
 
-		{% block header %}
-			{% include "header.html" %}
-		{% endblock %}
-
-		<section content>
-			{% block content %} {% endblock %}
-		</section>
-
-		{% block footer %}
-			{% include "footer.html" %}
-		{% endblock %}
-
+                <div class='span2'>
+                    <form class="nav affix navbar-form form-search pull-right" name="google-search" method="get" action="http://www.google.com/search" style="margin-right: -45px;">
+                    <input type="hidden" name="sitesearch" value="http://yr.sa/" />
+                    <input type="text" name ="q" class="span2 search-query" placeholder="Search" />
+                </form>
+                </div>
+            </div>
     </div>
 
 
-    <script src="http://code.jquery.com/jquery-latest.js"></script>
-		<script src="{{ SITEURL }}/theme/js/bootstrap.min.js"></script>
-		<script src="{{ SITEURL }}/theme/js/project.js"></script>
+        <script src="http://code.jquery.com/jquery-2.0.0.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
 
 		<!--
 		<script src="{{STATIC_URL}}js/bootstrap.min.js"></script>
